@@ -4,403 +4,498 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chinmayi C | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* --- Light Color Palette --- */
     :root {
-      --primary: #4A5C6A; /* Dark Slate Blue */
-      --secondary: #8AA8C4; /* Medium Blue */
-      --accent-gold: #FFC400; /* For the contact form heading accent */
-      --bg-sky-blue: #C8D9E6;
-      --bg-beige: #F5EFEB;
-      --text-dark: #333;
-      --white: #FFFFFF;
-      --border-light: #dcdcdc;
+      --bg-dark: #12181F;
+      --card-dark: #1A222A;
+      --primary-blue: #3E8BFF;
+      --text-light: #F0F0F0;
+      --text-muted: #A0AEC0;
+      --border-color: #2D3748;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: var(--bg-sky-blue);
-      color: var(--text-dark);
+      background-color: var(--bg-dark);
+      color: var(--text-light);
       scroll-behavior: smooth;
     }
 
-    /* Hero Section */
-    header {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      text-align: center;
-      padding: 120px 20px;
-      color: var(--white);
-    }
-    header h1 {
-      font-size: 3em;
-      background: linear-gradient(90deg, var(--white), var(--bg-beige));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-    }
-    header p {
-      font-size: 1.2em;
-      margin-top: 15px;
-      opacity: 0.9;
-    }
-    .hero-btn {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 12px 25px;
-      background: var(--white);
-      color: var(--primary);
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-    .hero-btn:hover {
-      background: var(--bg-beige);
-      transform: translateY(-2px);
-    }
-
-    /* Navigation */
-    nav {
-      position: sticky;
-      top: 0;
-      background: var(--white);
-      padding: 12px;
-      text-align: center;
-      z-index: 100;
-      border-bottom: 1px solid var(--border-light);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-    nav a {
-      margin: 0 15px;
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    nav a:hover {
-      color: #000;
-    }
-
-    /* Sections */
-    section {
-      padding: 50px 20px;
-      max-width: 1100px;
-      margin: auto;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease-in-out;
-    }
-    #about, #skills, #tools, #hackathons {
-        background-color: var(--bg-sky-blue);
-    }
-    #projects, #certifications, #trainings, #contact {
-        background-color: var(--bg-beige);
-    }
-    section.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    h2 {
-      font-size: 2em;
-      margin-bottom: 30px;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
     
-    /* About Me Section */
-    .about-container {
+    section {
+        padding: 80px 0;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 1s ease-out;
+    }
+    section.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    h2 .highlight {
+        color: var(--primary-blue);
+    }
+    
+    /* --- Navigation --- */
+    nav {
+        padding: 20px 0;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 100;
+    }
+    .nav-container {
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        gap: 40px;
     }
-    .profile-pic {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 4px solid var(--white);
-        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-        flex-shrink: 0;
-    }
-    .about-text {
-        flex-grow: 1;
-    }
-
-    /* Projects */
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-    }
-    .card {
-      background: var(--white);
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      transition: 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.12);
-    }
-    .card h3 {
-      margin-bottom: 10px;
-      color: var(--primary);
-    }
-    .card a {
-      color: var(--secondary);
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    /* Skills */
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-    }
-    .skill {
-      background: linear-gradient(90deg, var(--secondary), var(--primary));
-      color: var(--white);
-      padding: 10px 18px;
-      border-radius: 20px;
-      font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    /* --- NEW: Certifications Section Styles --- */
-    .certifications-container {
-        display: grid;
-        grid-template-columns: 1fr 2.5fr; /* 2 columns: heading | list */
-        gap: 40px;
-        align-items: start;
-    }
-    #certifications h2 {
-        text-align: left;
-        background: none;
-        -webkit-background-clip: unset;
-        -webkit-text-fill-color: unset;
-        color: var(--primary);
-        margin-bottom: 0;
-        line-height: 1.2;
-    }
-    #certifications .link-list {
-        list-style-type: none;
-        padding: 0;
-    }
-    #certifications .link-list li {
-      margin: 0;
-      padding: 0;
-      border-bottom: 1px solid var(--border-light);
-    }
-    #certifications .link-list a {
-      display: block;
-      padding: 15px 10px;
-      color: #555;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    #certifications .link-list a:hover {
-        background-color: rgba(74, 92, 106, 0.05);
-        color: var(--primary);
+    .nav-logo a {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-light);
         text-decoration: none;
     }
+    .nav-links {
+        display: flex;
+        gap: 25px;
+    }
+    .nav-links a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+        color: var(--text-light);
+    }
+    .nav-button a {
+        background-color: var(--primary-blue);
+        color: var(--text-light);
+        padding: 10px 25px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s;
+    }
+    .nav-button a:hover {
+        background-color: #2a78f5;
+    }
 
-    /* Old link-list for other sections */
-    .link-list {
-        list-style-type: none;
-        padding: 0;
+    /* --- Hero Section --- */
+    header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
     }
-    .link-list li {
-      margin: 10px 0;
+    .hero-container {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        align-items: center;
+        gap: 60px;
     }
-    .link-list a {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .link-list a:hover {
-      text-decoration: underline;
-    }
-
-    /* Contact Form Styles */
-    #contact h2 {
-        text-align: left;
-        background: none;
-        -webkit-background-clip: unset;
-        -webkit-text-fill-color: unset;
-        color: var(--text-dark);
-        font-weight: 700;
+    .hero-text .sub-heading {
+        font-weight: 600;
+        color: var(--text-muted);
         margin-bottom: 10px;
+        text-transform: uppercase;
     }
-    #contact h2::after {
-        content: '';
+    .hero-text h1 {
+        font-size: 3.2rem;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+    .hero-text h1 .highlight {
+        color: var(--primary-blue);
+    }
+    .hero-text .cursor {
+        display: inline-block;
+        width: 3px;
+        height: 3.2rem;
+        background-color: var(--primary-blue);
+        animation: blink 1s infinite;
+        vertical-align: bottom;
+    }
+    @keyframes blink {
+        50% { opacity: 0; }
+    }
+    .hero-text .description {
+        margin: 20px 0 30px;
+        color: var(--text-muted);
+        line-height: 1.8;
+        max-width: 500px;
+    }
+    .hero-image img {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 20px;
         display: block;
-        width: 50px;
-        height: 4px;
-        background: var(--accent-gold);
-        margin-top: 8px;
-        border-radius: 2px;
+        margin: 0 auto;
     }
-    .form-intro {
-        text-align: left;
-        font-size: 1.1rem;
-        color: #555;
-        margin-bottom: 30px;
+    .hero-buttons .hero-btn {
+        background-color: var(--primary-blue);
+        color: var(--text-light);
+        padding: 12px 30px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s;
     }
-    .contact-form {
+     .hero-buttons .hero-btn:hover {
+        background-color: #2a78f5;
+     }
+
+    /* --- About Section --- */
+    #about .about-container {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 60px;
+        align-items: center;
+    }
+    #about .about-image img {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 15px;
+    }
+    #about .about-text .sub-heading {
+        font-weight: 600;
+        color: var(--text-muted);
+        margin-bottom: 10px;
+        text-transform: uppercase;
+    }
+    #about .about-text h3 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    #about .about-text p {
+        color: var(--text-muted);
+        line-height: 1.8;
+    }
+
+    /* --- Projects Section --- */
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+    }
+    .project-card {
+        background-color: var(--card-dark);
+        border: 1px solid var(--border-color);
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
         display: flex;
         flex-direction: column;
+    }
+    .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    .project-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    .project-content {
+        padding: 25px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    .project-content h3 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    .project-content p {
+        color: var(--text-muted);
+        line-height: 1.7;
+        flex-grow: 1;
+        margin-bottom: 20px;
+    }
+     .project-content a {
+        color: var(--primary-blue);
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    /* --- Skills Section --- */
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+        text-align: center;
+    }
+    .skill-item {
+        background-color: var(--card-dark);
+        padding: 25px;
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+        font-weight: 600;
+    }
+
+    /* --- Two-column list sections (Certs, Trainings, etc.) --- */
+    .list-section-container {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 60px;
+        align-items: start;
+    }
+    .list-section-container h3 {
+        font-size: 2rem;
+        text-align: left;
+    }
+    .list-section-container ul {
+        list-style-type: none;
+    }
+    .list-section-container li {
+        border-bottom: 1px solid var(--border-color);
+    }
+    .list-section-container a, .list-section-container p {
+        display: block;
+        padding: 20px 0;
+        color: var(--text-muted);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+    .list-section-container a:hover {
+        color: var(--primary-blue);
+    }
+
+    /* --- Contact Form --- */
+    #contact h2::after {
+        content: ''; display: block; width: 60px; height: 4px;
+        background: var(--primary-blue); margin: 15px auto; border-radius: 2px;
+    }
+    .contact-form {
+        max-width: 800px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 20px;
     }
-    .form-group {
-        display: flex;
-        gap: 20px;
+    .contact-form .full-width {
+        grid-column: 1 / -1;
     }
     .contact-form input, .contact-form textarea {
         width: 100%;
-        background: var(--white);
-        border: 1px solid var(--border-light);
-        color: var(--text-dark);
+        background-color: var(--card-dark);
+        border: 1px solid var(--border-color);
+        color: var(--text-light);
         padding: 15px;
-        border-radius: 12px;
+        border-radius: 8px;
         font-family: 'Poppins', sans-serif;
-        font-size: 1rem;
-        transition: border-color 0.3s, box-shadow 0.3s;
+        transition: border-color 0.3s;
     }
-    .contact-form input::placeholder, .contact-form textarea::placeholder {
-        color: #999;
-    }
-    .contact-form input:focus, .contact-form textarea:focus {
+     .contact-form input:focus, .contact-form textarea:focus {
         outline: none;
-        border-color: var(--primary);
-        box-shadow: 0 0 8px rgba(74, 92, 106, 0.2);
-    }
-    .contact-form textarea {
-        height: 140px;
-        resize: vertical;
-    }
-    .form-submit-row {
-        text-align: right;
-    }
-    .submit-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 12px 25px;
+        border-color: var(--primary-blue);
+     }
+    .contact-form button {
+        grid-column: 2 / 3;
+        background-color: var(--primary-blue);
+        color: var(--text-light);
         border: none;
-        background: var(--primary);
-        color: var(--white);
-        font-weight: 600;
-        border-radius: 12px;
+        padding: 15px;
+        border-radius: 8px;
         cursor: pointer;
-        transition: background-color 0.3s, transform 0.3s;
+        font-weight: 600;
+        justify-self: end;
+        transition: background-color 0.3s;
     }
-    .submit-btn:hover {
-        background-color: #3a4a55;
-        transform: translateY(-2px);
-    }
-    .submit-btn svg {
-        width: 16px;
-        height: 16px;
-        fill: var(--white);
-    }
+     .contact-form button:hover {
+        background-color: #2a78f5;
+     }
     
+    /* --- Footer --- */
     footer {
-      background: var(--primary);
-      text-align: center;
-      padding: 20px;
-      color: var(--white);
+        text-align: center;
+        padding: 40px 0;
+        margin-top: 60px;
+        border-top: 1px solid var(--border-color);
+        color: var(--text-muted);
     }
 
-    #topBtn {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--secondary);
-      color: var(--white);
-      border: none;
-      padding: 12px;
-      border-radius: 50%;
-      font-size: 18px;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      z-index: 100;
+    /* --- Responsive Design --- */
+    @media (max-width: 992px) {
+        .hero-container, #about .about-container {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+        .hero-image, #about .about-image {
+            grid-row: 1;
+            margin-bottom: 40px;
+        }
+        .hero-text .description { margin: 20px auto 30px; }
+        .list-section-container { grid-template-columns: 1fr; }
+        .list-section-container h3 { text-align: center; margin-bottom: 40px; }
     }
-    
     @media (max-width: 768px) {
-        .about-container, .form-group {
-            flex-direction: column;
-            text-align: center;
-        }
-        .certifications-container {
-            grid-template-columns: 1fr; /* Stack columns on mobile */
-        }
-        #certifications h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+        .nav-links, .nav-button { display: none; }
+        .contact-form { grid-template-columns: 1fr; }
+        .contact-form button { grid-column: 1 / -1; justify-self: stretch; }
+        h2 { font-size: 2.2rem; }
+        .hero-text h1 { font-size: 2.5rem; }
+        .hero-text .cursor { height: 2.5rem; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Hey, I'm Chinmayi C!</h1>
-    <p>Generative AI • VLSI Design • Cybersecurity </p>
-    <a href="#projects" class="hero-btn">Explore My Work 🚀</a>
-  </header>
 
   <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#certifications">Certifications</a>
-    <a href="#tools">Tools</a>
-    <a href="#trainings">Trainings</a>
-    <a href="#hackathons">Hackathons</a>
-    <a href="#contact">Contact</a>
+    <div class="container nav-container">
+      <div class="nav-logo"><a href="#">Chinmayi C.</a></div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-button"><a href="#contact">Let's Talk</a></div>
+    </div>
   </nav>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <div class="about-container">
-        <img src="chin.jpg" alt="Chinmayi C Profile Picture" class="profile-pic">
-        <div class="about-text">
-            <p>Hey, I’m Chinmayi C! I'm someone who loves playing at the edge where VLSI, Generative AI, and Cybersecurity collide. I see circuits as stories waiting to be told, AI as imagination given form, and security as the art of keeping that magic safe. I’m not just chasing trends — I’m here to design, build, and protect the tech of tomorrow.</p>
+  <header>
+    <div class="container">
+      <div class="hero-container">
+        <div class="hero-text">
+          <p class="sub-heading">Hey, I'm Chinmayi C!</p>
+          <h1>Engineer in <span class="highlight">Generative AI</span>, VLSI Design & Cybersecurity<span class="cursor"></span></h1>
+          <p class="description">
+            I'm someone who loves playing at the edge where hardware, AI, and security collide. I’m here to design, build, and protect the tech of tomorrow.
+          </p>
+          <div class="hero-buttons">
+              <a href="#projects" class="hero-btn">Explore My Work</a>
+          </div>
         </div>
+        <div class="hero-image">
+          <img src="chin.jpg" alt="Chinmayi C Professional Photo">
+        </div>
+      </div>
     </div>
-  </section>
+  </header>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects">
-      <div class="card"><h3>Intelligent Data Security System</h3><p>Designed a hybrid data security model combining AES encryption and GAN-based LSB steganography, integrated with machine learning for anomaly detection. The system ensures enhanced data confidentiality, provides robust threat detection, and prevents unauthorized access by intelligently detecting tampering attempts in real-time.</p><a href="https://github.com/Chin2202">GitHub Link</a></div>
-      <div class="card"><h3>AI Timing Violation Predictor</h3><p>Developed a machine learning-based prediction tool to identify timing violations in VLSI circuits before physical implementation, reducing costly iterations in chip design and improving overall design efficiency and reliability.</p></div>
-      <div class="card"><h3>RISC-V Processor Core</h3><p>Implemented a custom 32-bit RISC-V processor from scratch in Verilog, simulating modules such as ALU, Control Unit, Instruction Memory, and Register File. Conducted full functional verification using Icarus Verilog and waveform analysis with GTKWave.</p></div>
-      <div class="card"><h3>VeriTB STUDIO</h3><p>Built a GUI-based Verilog Testbench Generator supporting automatic simulation, assertion insertion, and ZIP export of generated testbenches, streamlining the verification workflow for multi-module designs.</p></div>
-      <div class="card"><h3>AI Threat Detection</h3><p>Developed an intelligent cybersecurity system capable of real-time threat detection and mitigation, leveraging machine learning algorithms to identify patterns of suspicious activity and predict potential attacks.</p></div>
-      <div class="card"><h3>Dino Game Using Hand Gesture Recognition</h3><p>Created a Python-based gesture-controlled game where hand movements detected via webcam are mapped to in-game actions. Applied computer vision and image processing techniques for an interactive gaming experience.</p></div>
-      <div class="card"><h3>RADAR-Based Object Detection Using Ultrasonic Sensor</h3><p>Developed an ultrasonic RADAR system for distance measurement, obstacle detection, and target localization. Implemented real-time sensing algorithms to detect moving objects, calculate proximity, and visualize positional data, applicable for robotics and automation projects.</p></div>
-    </div>
-  </section>
+  <main>
+    <section id="about">
+      <div class="container">
+        <div class="about-container">
+          <div class="about-image">
+             <img src="https://via.placeholder.com/400x450" alt="Chinmayi C working">
+          </div>
+          <div class="about-text">
+            <p class="sub-heading">About Me</p>
+            <h3>A Passion for Building Secure, Intelligent Systems</h3>
+            <p>Hey, I’m Chinmayi C! I'm someone who loves playing at the edge where VLSI, Generative AI, and Cybersecurity collide. I see circuits as stories waiting to be told, AI as imagination given form, and security as the art of keeping that magic safe. I’m not just chasing trends — I’m here to design, build, and protect the tech of tomorrow. Curious by nature, creative by choice, and always excited to turn bold ideas into reality.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skills">
-      <div class="skill">Generative AI</div><div class="skill">SystemVerilog</div><div class="skill">Python</div><div class="skill">C/C++</div><div class="skill">TensorFlow</div><div class="skill">VLSI Design</div><div class="skill">Arduino</div><div class="skill">Cybersecurity</div><div class="skill">MATLAB</div><div class="skill">Cadence</div>
-    </div>
-  </section>
-  
-  <!-- Certifications -->
+    <section id="projects">
+      <div class="container">
+        <h2>Recent <span class="highlight">Projects</span></h2>
+        <div class="projects-grid">
+          
+          <div class="project-card">
+            <img src="data.jpeg" alt="Intelligent Data Security System">
+            <div class="project-content">
+              <h3>Intelligent Data Security System</h3>
+              <p>Designed a hybrid data security model combining AES encryption and GAN-based LSB steganography, integrated with machine learning for anomaly detection. The system ensures enhanced data confidentiality, provides robust threat detection, and prevents unauthorized access by intelligently detecting tampering attempts in real-time. Implemented an end-to-end workflow for secure data embedding, key generation, and automated threat analysis.</p>
+            </div>
+          </div>
 
-  <section id="certifications">
+          <div class="project-card">
+            <img src="ai.jpeg" alt="AI Timing Violation Predictor for VLSI Designs">
+            <div class="project-content">
+              <h3>AI Timing Violation Predictor for VLSI Designs</h3>
+              <p>Developed a machine learning-based prediction tool to identify timing violations in VLSI circuits before physical implementation. Leveraged historical simulation data to train neural networks, enabling early detection of critical path violations, reducing costly iterations in chip design, and improving overall design efficiency and reliability.</p>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="GTKWave.png alt="RISC-V Processor Core">
+            <div class="project-content">
+              <h3>RISC-V Processor Core</h3>
+              <p>Implemented a custom 32-bit RISC-V processor from scratch in Verilog, simulating modules such as ALU, Control Unit, Instruction Memory, Register File, and PC. Conducted full functional verification using Icarus Verilog and waveform analysis with GTKWave, ensuring correct instruction execution, pipeline flow, and modular scalability for further custom enhancements.</p>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="veri.png" alt="VeriTB STUDIO">
+            <div class="project-content">
+                <h3>VeriTB STUDIO</h3>
+                <p>Built a GUI-based Verilog Testbench Generator supporting automatic simulation, assertion insertion, and ZIP export of generated testbenches. Streamlined verification workflow for multi-module designs, reducing manual effort and errors in testbench creation, while providing interactive user control over testbench parameters.</p>
+            </div>
+          </div>
+
+          <div class="project-card">
+              <img src="AI_Powered.png" alt="AI Threat Detection">
+              <div class="project-content">
+                  <h3>AI Threat Detection</h3>
+                  <p>Developed an intelligent cybersecurity system capable of real-time threat detection and mitigation. Leveraged machine learning algorithms to identify patterns of suspicious activity, predict potential attacks, and automate responses, significantly improving network security monitoring and reducing incident response time.</p>
+              </div>
+          </div>
+
+          <div class="project-card">
+              <img src="dino.jeg" alt="Dino Game Using Hand Gesture Recognition">
+              <div class="project-content">
+                  <h3>Dino Game Using Hand Gesture Recognition</h3>
+                  <p>Created a Python-based gesture-controlled game where hand movements detected via webcam are mapped to in-game actions. Applied computer vision and image processing techniques to track gestures accurately, offering a real-time interactive gaming experience.</p>
+              </div>
+          </div>
+ 
+<div class="project-card">
+              <img src="radar.jpeg" alt="RADAR-Based Object Detection Using Ultrasonic Sensor">
+              <div class="project-content">
+                  <h3>RADAR-Based Object Detection Using Ultrasonic Sensor</h3>
+                  <p>Developed an ultrasonic RADAR system for distance measurement, obstacle detection, and target localization. Implemented real-time sensing algorithms to detect moving objects, calculate proximity, and visualize positional data, applicable for robotics and automation projects.</p>
+              </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+          <h2>Core <span class="highlight">Competencies</span></h2>
+          <div class="skills-grid">
+              <div class="skill-item">Generative AI</div>
+              <div class="skill-item">SystemVerilog</div>
+              <div class="skill-item">Python</div>
+              <div class="skill-item">C/C++</div>
+              <div class="skill-item">TensorFlow</div>
+              <div class="skill-item">VLSI Design</div>
+              <div class="skill-item">Arduino</div>
+              <div class="skill-item">Cybersecurity</div>
+              <div class="skill-item">MATLAB</div>
+              <div class="skill-item">Cadence</div>
+          </div>
+      </div>
+    </section>
+
+<section id="certifications">
 
     <h2>Certifications</h2>
 
@@ -425,67 +520,42 @@
       <li><a href="https://www.linkedin.com/learning/certificates/08555bed3352c3cc74169cff4cbd1a9a35f954cee198c432c24f8c1a2c8b376e?trk=share_certificate">CyberSecurity Foundations</a></li>
 
     </ul>
-
-  </section>
-  
-  <section id="tools">
-    <h2>Tools</h2>
-    <p style="text-align: center; font-size: 1.1rem; line-height: 1.8;">Cadence • Vivado • Icarus Verilog • GTKWave • UiPath Studio • Keil • Arduino IDE • MATLAB • Power Automate</p>
-  </section>
-
-  <section id="trainings">
-    <h2>Trainings</h2>
-    <ul class="link-list">
-      <li>BOSCH – Industry-focused emerging technologies (2025)</li>
-      <li>NXP Semiconductors – RF Circuit Design & Simulation (2025)</li>
-      <li>NXTWave – Build Your Own Gen AI Model (2024)</li>
-    </ul>
-  </section>
-
-  <section id="hackathons">
-    <h2>Hackathons & Roles</h2>
-    <p style="text-align: center; line-height: 1.8;"><b>SIH 2023</b>: AI-based legal documentation project, national finalist.<br><b>FOSS Hackathon 2024</b>: Contributions to FreeCAD open-source.<br><b>Anvesana Hub</b>: Content Writer, enhancing digital reach.</p>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <p class="form-intro">Contact Form</p>
-    <form class="contact-form" action="https://formspree.io/f/xandkknr" method="POST">
-        <div class="form-group">
-            <input type="text" name="name" placeholder="Full name" required>
-            <input type="email" name="email" placeholder="Email address" required>
+          
+    </section>
+    
+    <section id="trainings">
+      <div class="container">
+          <div class="list-section-container">
+              <h3>Trainings</h3>
+              <ul class="link-list">
+                  <li><p>BOSCH – Industry-focused emerging technologies (2025)</p></li>
+                  <li><p>NXP Semiconductors – RF Circuit Design & Simulation (2025)</p></li>
+                  <li><p>NXTWave – Build Your Own Gen AI Model (2024)</p></li>
+              </ul>
+          </div>
+      </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <h2>Get In <span class="highlight">Touch</span></h2>
+            <form class="contact-form" action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <textarea name="message" placeholder="Your Message" rows="5" class="full-width" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
         </div>
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <div class="form-submit-row">
-            <button type="submit" class="submit-btn">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span>Send Message</span>
-            </button>
-        </div>
-    </form>
-  </section>
+    </section>
+  </main>
 
   <footer>
-    <p>© 2025 Chinmayi C | Crafted with ⚡</p>
+      <div class="container">
+          <p>© 2025 Chinmayi C | Crafted with ⚡</p>
+      </div>
   </footer>
 
-  <button onclick="topFunction()" id="topBtn">⬆</button>
-
   <script>
-    // Scroll-to-top button
-    let topBtn = document.getElementById("topBtn");
-    window.onscroll = function() {
-      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-        topBtn.style.display = "block";
-      } else {
-        topBtn.style.display = "none";
-      }
-    };
-    function topFunction() {
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-    }
-
     // Animate sections on scroll
     const sections = document.querySelectorAll("section");
     const animateOnScroll = () => {
