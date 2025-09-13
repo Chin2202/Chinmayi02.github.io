@@ -5,34 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chinmayi C | Portfolio</title>
   <style>
-    /* General Styles */
-    body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding: 0; scroll-behavior: smooth; line-height: 1.6; }
-    header { background: linear-gradient(135deg, #2c3e50, #3498db); color: white; padding: 80px 20px; text-align: center; }
-    header h1 { font-size: 3em; margin: 0; }
+    /* General Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f5f6fa; color: #333; scroll-behavior: smooth; }
+
+    /* Hero Section */
+    header { 
+      background: linear-gradient(135deg, #2c3e50, #3498db);
+      color: white; 
+      padding: 100px 20px; 
+      text-align: center;
+    }
+    header h1 { font-size: 3em; margin-bottom: 10px; }
     header p { font-size: 1.2em; opacity: 0.9; }
+    .hero-btn { 
+      display: inline-block; 
+      margin-top: 20px; 
+      padding: 12px 25px; 
+      background: #e67e22; 
+      color: white; 
+      border-radius: 5px; 
+      text-decoration: none; 
+      font-weight: bold; 
+      transition: 0.3s;
+    }
+    .hero-btn:hover { background: #d35400; }
 
-    nav { position: sticky; top: 0; background: #222; padding: 10px; text-align: center; z-index: 100; }
-    nav a { margin: 0 15px; color: #ddd; text-decoration: none; font-weight: bold; }
-    nav a:hover { color: #fff; }
+    /* Navigation */
+    nav { position: sticky; top: 0; background: #222; padding: 12px; text-align: center; z-index: 100; }
+    nav a { margin: 0 15px; color: #ddd; text-decoration: none; font-weight: bold; transition: 0.3s; }
+    nav a:hover { color: #3498db; }
 
-    section { padding: 60px 20px; max-width: 1000px; margin: auto; }
-    h2 { color: #2c3e50; border-bottom: 2px solid #3498db; display: inline-block; padding-bottom: 5px; }
+    /* Sections */
+    section { padding: 70px 20px; max-width: 1100px; margin: auto; opacity: 0; transform: translateY(40px); transition: all 0.7s ease-in-out; }
+    section.show { opacity: 1; transform: translateY(0); }
+    h2 { color: #2c3e50; margin-bottom: 20px; border-bottom: 3px solid #3498db; display: inline-block; padding-bottom: 5px; }
 
-    /* Project Cards */
-    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
-    .card { background: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s; }
-    .card:hover { transform: translateY(-5px); }
-    .card h3 { margin-top: 0; }
-    .card a { color: #3498db; text-decoration: none; }
+    /* Projects Grid */
+    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 6px 12px rgba(0,0,0,0.1); transition: 0.3s; }
+    .card:hover { transform: translateY(-6px) scale(1.02); }
+    .card h3 { margin-bottom: 10px; color: #3498db; }
 
-    /* Skills Grid */
-    .skills { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; }
+    /* Skills */
+    .skills { display: flex; flex-wrap: wrap; gap: 12px; }
     .skill { background: #3498db; color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9em; }
 
-    /* Contact & Button */
-    .button { display: inline-block; background: #3498db; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px; margin-top: 15px; }
+    /* Contact Button */
+    .button { display: inline-block; background: #3498db; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px; margin-top: 20px; transition: 0.3s; }
     .button:hover { background: #2c3e50; }
 
+    /* Footer */
     footer { background: #222; color: white; text-align: center; padding: 20px; margin-top: 50px; }
 
     /* Scroll-to-Top */
@@ -41,11 +64,11 @@
   </style>
 </head>
 <body>
-  <!-- Hero Section -->
+  <!-- Hero -->
   <header>
     <h1>Hi, I’m Chinmayi 👋</h1>
     <p>Engineering Student | Aspiring VLSI Verification Engineer | AI & IoT Enthusiast</p>
-    <a href="#projects" class="button">View My Work</a>
+    <a href="#projects" class="hero-btn">🚀 View My Work</a>
   </header>
 
   <!-- Navigation -->
@@ -68,12 +91,16 @@
     <div class="projects">
       <div class="card">
         <h3>Intelligent Data Security System</h3>
-        <p>AES + LSB Steganography + ML-based key generation for enhanced security.</p>
+        <p>AES + LSB Steganography + ML-based key generation.</p>
         <a href="https://github.com/Chin2202">GitHub Link</a>
       </div>
       <div class="card">
+        <h3>AI Timing Violation Predictor</h3>
+        <p>ML-based prediction of timing violations in VLSI designs.</p>
+      </div>
+      <div class="card">
         <h3>RISC-V Processor Core</h3>
-        <p>32-bit processor in Verilog, simulated using Icarus Verilog & GTKWave.</p>
+        <p>32-bit RISC-V in Verilog, simulated with Icarus Verilog & GTKWave.</p>
       </div>
       <div class="card">
         <h3>VeriTB STUDIO</h3>
@@ -81,7 +108,7 @@
       </div>
       <div class="card">
         <h3>Dino Game with Gesture Control</h3>
-        <p>Python project using webcam-based hand gesture recognition.</p>
+        <p>Python + webcam-based hand gesture recognition game.</p>
       </div>
     </div>
   </section>
@@ -121,7 +148,7 @@
   <button onclick="topFunction()" id="topBtn">⬆</button>
 
   <script>
-    // Scroll to top button logic
+    // Show scroll-to-top button
     let topBtn = document.getElementById("topBtn");
     window.onscroll = function() {
       if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
@@ -134,6 +161,18 @@
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
     }
+
+    // Fade-in sections on scroll
+    const sections = document.querySelectorAll("section");
+    window.addEventListener("scroll", () => {
+      const trigger = window.innerHeight * 0.85;
+      sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top < trigger) {
+          section.classList.add("show");
+        }
+      });
+    });
   </script>
 </body>
 </html>
