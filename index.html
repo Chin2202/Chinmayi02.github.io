@@ -1,344 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chinmayi C | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background: #0a0a0f;
-      color: #f5f5f5;
-      scroll-behavior: smooth;
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chinmayi C | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #f4f7f9; /* Changed to a light gray background */
+      color: #333; /* Darker text for readability */
+      scroll-behavior: smooth;
+    }
 
-    /* Neon Accent Colors */
-    :root {
-      --primary: #00f2fe;
-      --secondary: #4facfe;
-      --glow: 0 0 15px rgba(79,172,254,0.7), 0 0 30px rgba(0,242,254,0.6);
-    }
+    /* Professional Color Palette */
+    :root {
+      --primary: #0056b3; /* A professional blue */
+      --secondary: #007bff; /* A slightly lighter blue for highlights/hovers */
+      --dark: #212529;
+      --light: #ffffff;
+      --border-color: #dee2e6;
+    }
 
-    /* Hero */
-    header {
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    /* Hero */
+    header {
+      background: var(--dark);
+      color: var(--light);
+      text-align: center;
+      padding: 100px 20px;
+    }
+    header h1 {
+      font-size: 3em;
+      color: var(--light);
+      /* Removed the gradient and neon shadow */
+    }
+    header p {
+      font-size: 1.2em;
+      margin-top: 15px;
+      color: #ccc; /* Softer white for subtitle */
+    }
+    .hero-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 25px;
+      background: var(--primary);
+      color: var(--light);
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      /* Removed neon box-shadow */
+    }
+    .hero-btn:hover {
+      background: var(--secondary);
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--light);
+      padding: 15px;
+      text-align: center;
+      z-index: 100;
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow for depth */
+    }
+    nav a {
+      margin: 0 15px;
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: var(--primary);
+      /* Removed neon text-shadow */
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 20px;
+      max-width: 1100px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.7s ease-out;
+    }
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    h2 {
+      font-size: 2.2em;
+      margin-bottom: 40px;
+      color: var(--dark);
       text-align: center;
-      padding: 120px 20px;
+      /* Removed text gradient */
+    }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+    .card {
+      background: var(--light);
+      padding: 25px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      /* Replaced neon glow with subtle lift effect */
+    }
+    .card h3 {
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+    .card a {
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Skills */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+    .skill {
+      background: #e9ecef; /* Light gray background for skills */
+      color: var(--dark);
+      padding: 10px 18px;
+      border-radius: 20px;
+      font-weight: bold;
+      /* Removed gradient and neon shadow */
+    }
+
+    /* Links list (for courses/certs) */
+    .link-list {
+      list-style-type: none;
+      padding-left: 0;
     }
-    header h1 {
-      font-size: 3em;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: var(--glow);
-    }
-    header p {
-      font-size: 1.2em;
-      margin-top: 15px;
-      opacity: 0.9;
-    }
-    .hero-btn {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 12px 25px;
+    .link-list li {
+      margin: 12px 0;
+    }
+    .link-list a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .link-list a:hover {
+      text-decoration: underline;
+    }
+
+    /* Contact */
+    .button {
+      display: inline-block;
+      background: var(--primary);
+      color: var(--light);
+      padding: 12px 20px;
+      text-decoration: none;
+      border-radius: 30px;
+      margin-top: 20px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      /* Removed glow */
+    }
+    .button:hover {
       background: var(--secondary);
-      color: white;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-      box-shadow: var(--glow);
     }
-    .hero-btn:hover {
-      background: var(--primary);
+    #contact p {
+      line-height: 1.6;
     }
-
-    /* Navigation */
-    nav {
-      position: sticky;
-      top: 0;
-      background: #111;
-      padding: 12px;
-      text-align: center;
-      z-index: 100;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    nav a {
-      margin: 0 15px;
-      color: #ddd;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    nav a:hover {
-      color: var(--primary);
-      text-shadow: var(--glow);
-    }
-
-    /* Sections */
-    section {
-      padding: 80px 20px;
-      max-width: 1100px;
-      margin: auto;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease-in-out;
-    }
-    section.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    h2 {
-      font-size: 2em;
-      margin-bottom: 30px;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    /* Projects */
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-    }
-    .card {
-      background: #1a1a2e;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-      transition: 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--glow);
-    }
-    .card h3 {
-      margin-bottom: 10px;
+    #contact a {
       color: var(--primary);
     }
-    .card a {
-      color: var(--secondary);
-      text-decoration: none;
-    }
 
-    /* Skills */
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .skill {
-      background: linear-gradient(90deg, var(--secondary), var(--primary));
-      color: black;
-      padding: 10px 18px;
-      border-radius: 20px;
-      font-weight: bold;
-      box-shadow: var(--glow);
-    }
+    footer {
+      background: var(--dark);
+      text-align: center;
+      padding: 25px;
+      margin-top: 50px;
+      color: #aaa;
+    }
 
-    /* Links list (for courses/certs) */
-    .link-list li {
-      margin: 10px 0;
-    }
-    .link-list a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-    .link-list a:hover {
-      text-decoration: underline;
-    }
-
-    /* Contact */
-    .button {
-      display: inline-block;
-      background: var(--secondary);
-      color: black;
-      padding: 12px 20px;
-      text-decoration: none;
-      border-radius: 30px;
-      margin-top: 20px;
-      font-weight: bold;
-      box-shadow: var(--glow);
-    }
-
-    footer {
-      background: #111;
-      text-align: center;
-      padding: 20px;
-      margin-top: 50px;
-      color: #888;
-    }
-
-    /* Scroll to top */
-    #topBtn {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--primary);
-      color: black;
-      border: none;
-      padding: 12px;
-      border-radius: 50%;
-      font-size: 18px;
-      cursor: pointer;
-      box-shadow: var(--glow);
-    }
-  </style>
+    /* Scroll to top */
+    #topBtn {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: var(--light);
+      border: none;
+      padding: 12px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+  </style>
 </head>
 <body>
-  <!-- Hero -->
-  <header>
-    <h1>Chinmayi C</h1>
-    <p>Generative AI • VLSI Design • Cybersecurity Enthusiast</p>
-    <a href="#projects" class="hero-btn">Explore My Work 🚀</a>
-  </header>
+    <header>
+    <h1>Chinmayi C</h1>
+    <p>Generative AI • VLSI Design • Cybersecurity </p>
+    <a href="#projects" class="hero-btn">Explore My Work 🚀</a>
+  </header>
 
-  <!-- Navigation -->
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#certifications">Certifications</a>
-    <a href="#tools">Tools</a>
-    <a href="#trainings">Trainings</a>
-    <a href="#hackathons">Hackathons</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#tools">Tools</a>
+    <a href="#trainings">Trainings</a>
+    <a href="#hackathons">Hackathons</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-  <!-- About -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Hey, I’m Chinmayi C! 
-      I'm someone who loves playing at the edge where VLSI, Generative AI, and Cybersecurity collide. I see circuits as stories waiting to be told, AI as imagination given form, and security as the art of keeping that magic safe.</p>
-  </section>
+    <section id="about">
+    <h2>About Me</h2>
+    <p style="text-align: center; max-width: 800px; margin: auto; line-height: 1.7;">Hey, I’m Chinmayi C! 
+      I'm someone who loves playing at the edge where VLSI, Generative AI, and Cybersecurity collide. I see circuits as stories waiting to be told, AI as imagination given form, and security as the art of keeping that magic safe.</p>
+  </section>
 
-  <!-- Projects -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects">
-      <div class="card">
-        <h3>Intelligent Data Security System</h3>
-        <p>AES + LSB Steganography + ML for secure communication.</p>
-        <a href="https://github.com/Chin2202">GitHub Link</a>
-      </div>
-      <div class="card">
-        <h3>AI Timing Violation Predictor</h3>
-        <p>Neural networks predicting timing violations in VLSI designs.</p>
-      </div>
-      <div class="card">
-        <h3>RISC-V Processor Core</h3>
-        <p>32-bit processor designed & simulated with Verilog and GTKWave.</p>
-      </div>
-      <div class="card">
-        <h3>VeriTB STUDIO</h3>
-        <p>GUI-based Verilog Testbench Generator with assertions.</p>
-      </div>
-      <div class="card">
-        <h3>AI Threat Detection</h3>
-        <p>ML-powered system to detect and mitigate cyber risks in real time.</p>
-      </div>
-    </div>
-  </section>
+    <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>Intelligent Data Security System</h3>
+        <p>AES + LSB Steganography + ML for secure communication.</p>
+        <a href="https://github.com/Chin2202">GitHub Link →</a>
+      </div>
+      <div class="card">
+        <h3>AI Timing Violation Predictor</h3>
+        <p>Neural networks predicting timing violations in VLSI designs.</p>
+      </div>
+      <div class="card">
+        <h3>RISC-V Processor Core</h3>
+        <p>32-bit processor designed & simulated with Verilog and GTKWave.</p>
+      </div>
+      <div class="card">
+        <h3>VeriTB STUDIO</h3>
+        <p>GUI-based Verilog Testbench Generator with assertions.</p>
+      </div>
+      <div class="card">
+        <h3>AI Threat Detection</h3>
+        <p>ML-powered system to detect and mitigate cyber risks in real time.</p>
+      </div>
+    </div>
+  </section>
 
-  <!-- Skills -->
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skills">
-      <div class="skill">Generative AI</div>
-      <div class="skill">SystemVerilog</div>
-      <div class="skill">Python</div>
-      <div class="skill">C/C++</div>
-      <div class="skill">TensorFlow</div>
-      <div class="skill">VLSI Design</div>
-      <div class="skill">Arduino</div>
-      <div class="skill">Cybersecurity</div>
-      <div class="skill">MATLAB</div>
-      <div class="skill">Cadence</div>
-    </div>
-  </section>
+    <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill">Generative AI</div>
+      <div class="skill">SystemVerilog</div>
+      <div class="skill">Python</div>
+      <div class="skill">C/C++</div>
+      <div class="skill">TensorFlow</div>
+      <div class="skill">VLSI Design</div>
+      <div class="skill">Arduino</div>
+      <div class="skill">Cybersecurity</div>
+      <div class="skill">MATLAB</div>
+      <div class="skill">Cadence</div>
+    </div>
+  </section>
 
-  <!-- Certifications -->
-  <section id="certifications">
-    <h2>Certifications</h2>
-    <ul class="link-list">
-      <li><a href="YOUR_LINK_HERE">RTL-to-GDSII Flow v6.0 (Cadence)</a></li>
-      <li><a href="YOUR_LINK_HERE">Oracle Certified Generative AI Professional</a></li>
-      <li><a href="YOUR_LINK_HERE">Deloitte Cyber Security Simulation</a></li>
-      <li><a href="YOUR_LINK_HERE">Microsoft Generative AI (LinkedIn)</a></li>
-    </ul>
-  </section>
+    <section id="certifications">
+    <h2>Certifications</h2>
+    <ul class="link-list">
+      <li><a href="YOUR_LINK_HERE">RTL-to-GDSII Flow v6.0 (Cadence)</a></li>
+      <li><a href="YOUR_LINK_HERE">Oracle Certified Generative AI Professional</a></li>
+      <li><a href="YOUR_LINK_HERE">Deloitte Cyber Security Simulation</a></li>
+      <li><a href="YOUR_LINK_HERE">Microsoft Generative AI (LinkedIn)</a></li>
+    </ul>
+  </section>
 
-  <!-- Tools -->
-  <section id="tools">
-    <h2>Tools</h2>
-    <p>Cadence • Vivado • Icarus Verilog • GTKWave • UiPath Studio • Keil • Arduino IDE • MATLAB • Power Automate</p>
-  </section>
+    <section id="tools">
+    <h2>Tools</h2>
+    <p style="text-align: center; font-size: 1.1em; line-height: 1.8;">Cadence • Vivado • Icarus Verilog • GTKWave • UiPath Studio • Keil • Arduino IDE • MATLAB • Power Automate</p>
+  </section>
 
-  <!-- Trainings -->
-  <section id="trainings">
-    <h2>Trainings</h2>
-    <ul class="link-list">
-      <li>BOSCH – Industry-focused emerging technologies (2025)</li>
-      <li>NXP Semiconductors – RF Circuit Design & Simulation (2025)</li>
-      <li>NXTWave – Build Your Own Gen AI Model (2024)</li>
-    </ul>
-  </section>
+    <section id="trainings">
+    <h2>Trainings</h2>
+    <ul class="link-list">
+      <li>BOSCH – Industry-focused emerging technologies (2025)</li>
+      <li>NXP Semiconductors – RF Circuit Design & Simulation (2025)</li>
+      <li>NXTWave – Build Your Own Gen AI Model (2024)</li>
+    </ul>
+  </section>
 
-  <!-- Hackathons -->
-  <section id="hackathons">
-    <h2>Hackathons & Roles</h2>
-    <p><b>SIH 2023</b>: AI-based legal documentation project, national finalist.</p>
-    <p><b>FOSS Hackathon 2024</b>: Contributions to FreeCAD open-source.</p>
-    <p><b>Anvesana Hub</b>: Content Writer, enhancing digital reach.</p>
-  </section>
+    <section id="hackathons">
+    <h2>Hackathons & Roles</h2>
+    <p><b>SIH 2023</b>: AI-based legal documentation project, national finalist.</p>
+    <p><b>FOSS Hackathon 2024</b>: Contributions to FreeCAD open-source.</p>
+    <p><b>Anvesana Hub</b>: Content Writer, enhancing digital reach.</p>
+  </section>
 
-  <!-- Contact -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:chinnnn2202@gmail.com">chinnnn2202@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/chinmayi-chidanand-263656268">linkedin.com/in/chinmayi-chidanand</a></p>
-    <p>GitHub: <a href="https://github.com/Chin2202">github.com/Chin2202</a></p>
-    <a class="button" href="Chinmayi-C-Resume.pdf" target="_blank">📄 View Resume</a>
-  </section>
+    <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:chinnnn2202@gmail.com">chinnnn2202@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/chinmayi-chidanand-263656268">linkedin.com/in/chinmayi-chidanand</a></p>
+    <p>GitHub: <a href="https://github.com/Chin2202">github.com/Chin2202</a></p>
+    <a class="button" href="Chinmayi-C-Resume.pdf" target="_blank">📄 View Resume</a>
+  </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Chinmayi C | Crafted with ⚡ using GitHub Pages</p>
-  </footer>
+    <footer>
+    <p>© 2025 Chinmayi C | Crafted with ⚡ using GitHub Pages</p>
+  </footer>
 
-  <!-- Scroll to Top -->
-  <button onclick="topFunction()" id="topBtn">⬆</button>
+    <button onclick="topFunction()" id="topBtn">⬆</button>
 
-  <script>
-    // Scroll-to-top button
-    let topBtn = document.getElementById("topBtn");
-    window.onscroll = function() {
-      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-        topBtn.style.display = "block";
-      } else {
-        topBtn.style.display = "none";
-      }
-    };
-    function topFunction() {
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-    }
+  <script>
+    // Scroll-to-top button
+    let topBtn = document.getElementById("topBtn");
+    window.onscroll = function() {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        topBtn.style.display = "block";
+      } else {
+        topBtn.style.display = "none";
+      }
+    };
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
 
-    // Animate sections on scroll
-    const sections = document.querySelectorAll("section");
-    window.addEventListener("scroll", () => {
-      const trigger = window.innerHeight * 0.85;
-      sections.forEach(section => {
-        const top = section.getBoundingClientRect().top;
-        if (top < trigger) {
-          section.classList.add("show");
-        }
-      });
-    });
-  </script>
+    // Animate sections on scroll
+    const sections = document.querySelectorAll("section");
+    window.addEventListener("scroll", () => {
+      const trigger = window.innerHeight * 0.85;
+      sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top < trigger) {
+          section.classList.add("show");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
