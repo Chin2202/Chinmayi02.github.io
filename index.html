@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chinmayi C | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Poppins', sans-serif; /* Changed Font */
       background: #0a0a0f;
       color: #f5f5f5;
       scroll-behavior: smooth;
@@ -79,7 +79,7 @@
 
     /* Sections */
     section {
-      padding: 80px 20px;
+      padding: 50px 20px; /* Reduced vertical padding */
       max-width: 1100px;
       margin: auto;
       opacity: 0;
@@ -97,6 +97,34 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+    
+    /* --- NEW: About Me Section with Picture --- */
+    .about-container {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+    }
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%; /* Makes the image circular */
+        object-fit: cover; /* Prevents image stretching */
+        border: 3px solid var(--secondary);
+        box-shadow: var(--glow);
+        flex-shrink: 0;
+    }
+    .about-text {
+        flex-grow: 1;
+    }
+    /* Responsive layout for about section */
+    @media (max-width: 768px) {
+        .about-container {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+    /* --- END NEW --- */
+
 
     /* Projects */
     .projects {
@@ -190,14 +218,12 @@
   </style>
 </head>
 <body>
-  <!-- Hero -->
   <header>
     <h1>Hey, I'm Chinmayi C!</h1>
     <p>Generative AI • VLSI Design • Cybersecurity </p>
     <a href="#projects" class="hero-btn">Explore My Work 🚀</a>
   </header>
 
-  <!-- Navigation -->
   <nav>
     <a href="#about">About</a>
     <a href="#projects">Projects</a>
@@ -209,23 +235,26 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  <!-- About -->
   <section id="about">
     <h2>About Me</h2>
-    <p>Hey, I’m Chinmayi C!
-          I'm someone who loves playing at the edge where VLSI, Generative AI, and Cybersecurity collide. 
-          I see circuits as stories waiting to be told, AI as imagination given form, and security as the art of keeping that magic safe.
-          I’m not just chasing trends — I’m here to design, build, and protect the tech of tomorrow. Curious by nature, creative by choice, and always excited to turn bold ideas into reality.</p>
+    <div class="about-container">
+        <img src="https://via.placeholder.com/150" alt="Chinmayi C Profile Picture" class="profile-pic">
+        <div class="about-text">
+            <p>Hey, I’m Chinmayi C!
+            I'm someone who loves playing at the edge where VLSI, Generative AI, and Cybersecurity collide. 
+            I see circuits as stories waiting to be told, AI as imagination given form, and security as the art of keeping that magic safe.
+            I’m not just chasing trends — I’m here to design, build, and protect the tech of tomorrow. Curious by nature, creative by choice, and always excited to turn bold ideas into reality.</p>
+        </div>
+    </div>
   </section>
 
-  <!-- Projects -->
   <section id="projects">
     <h2>Projects</h2>
     <div class="projects">
       <div class="card">
         <h3>Intelligent Data Security System</h3>
-        <p>Designed a hybrid data security model combining AES encryption and GAN-based LSB steganography, integrated with machine learning for anomaly detection. 
-              The system ensures enhanced data confidentiality, provides robust threat detection, and prevents unauthorized access by intelligently detecting tampering attempts in real-time. Implemented an end-to-end workflow for secure data embedding, key generation, and automated threat analysis.</p>
+        <p>Designed a hybrid data security model combining AES encryption and GAN-based LSB steganography, integrated with machine learning for anomaly detection.        
+           The system ensures enhanced data confidentiality, provides robust threat detection, and prevents unauthorized access by intelligently detecting tampering attempts in real-time. Implemented an end-to-end workflow for secure data embedding, key generation, and automated threat analysis.</p>
         <a href="https://github.com/Chin2202">GitHub Link</a>
       </div>
       <div class="card">
@@ -255,7 +284,6 @@
    </div>
   </section>
 
-  <!-- Skills -->
   <section id="skills">
     <h2>Skills</h2>
     <div class="skills">
@@ -272,7 +300,6 @@
     </div>
   </section>
 
-  <!-- Certifications -->
   <section id="certifications">
     <h2>Certifications</h2>
     <ul class="link-list">
@@ -288,13 +315,11 @@
     </ul>
   </section>
 
-  <!-- Tools -->
   <section id="tools">
     <h2>Tools</h2>
     <p>Cadence • Vivado • Icarus Verilog • GTKWave • UiPath Studio • Keil • Arduino IDE • MATLAB • Power Automate</p>
   </section>
 
-  <!-- Trainings -->
   <section id="trainings">
     <h2>Trainings</h2>
     <ul class="link-list">
@@ -304,7 +329,6 @@
     </ul>
   </section>
 
-  <!-- Hackathons -->
   <section id="hackathons">
     <h2>Hackathons & Roles</h2>
     <p><b>SIH 2023</b>: AI-based legal documentation project, national finalist.</p>
@@ -312,21 +336,18 @@
     <p><b>Anvesana Hub</b>: Content Writer, enhancing digital reach.</p>
   </section>
 
-  <!-- Contact -->
   <section id="contact">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:chinnnn2202@gmail.com">chinnnn2202@gmail.com</a></p>
     <p>LinkedIn: <a href="https://linkedin.com/in/chinmayi-chidanand-263656268">linkedin.com/in/chinmayi-chidanand</a></p>
     <p>GitHub: <a href="https://github.com/Chin2202">github.com/Chin2202</a></p>
-    <a class="button" href=""C:\Users\chinn\Downloads\Chinmayi-C-Resume (2).pdf"" target="_blank">📄 View Resume</a>
+    <a class="button" href="Chinmayi-C-Resume (2).pdf" target="_blank">📄 View Resume</a>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>© 2025 Chinmayi C | Crafted with ⚡ using GitHub Pages</p>
   </footer>
 
-  <!-- Scroll to Top -->
   <button onclick="topFunction()" id="topBtn">⬆</button>
 
   <script>
@@ -354,6 +375,14 @@
           section.classList.add("show");
         }
       });
+    });
+    
+    // Trigger the animation for the first section on load
+    document.addEventListener("DOMContentLoaded", () => {
+        const firstSection = document.querySelector("section");
+        if(firstSection) {
+            firstSection.classList.add("show");
+        }
     });
   </script>
 </body>
