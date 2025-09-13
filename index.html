@@ -4,343 +4,316 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chinmayi C | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    /* --- NEW: Light Color Palette --- */
     :root {
-      --primary: #00f2fe;
-      --secondary: #4facfe;
-      --background-dark: #0a0f1a;
-      --text-light: #e0e0e0;
-      --text-dark: #a0a0b0;
-      --card-bg: rgba(255, 255, 255, 0.05);
-      --card-border: rgba(255, 255, 255, 0.1);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+      --primary: #4A5C6A; /* Dark Slate Blue */
+      --secondary: #8AA8C4; /* Medium Blue */
+      --accent-gold: #FFC400; /* For the contact form heading accent */
+      --bg-sky-blue: #C8D9E6;
+      --bg-beige: #F5EFEB;
+      --text-dark: #333;
+      --white: #FFFFFF;
+      --border-light: #dcdcdc;
     }
 
     body {
+      margin: 0;
       font-family: 'Poppins', sans-serif;
-      background-color: var(--background-dark);
-      color: var(--text-light);
+      background: var(--bg-sky-blue);
+      color: var(--text-dark);
       scroll-behavior: smooth;
-      overflow-x: hidden;
-      cursor: none; /* Hide default cursor for custom one */
-    }
-    
-    /* --- NEW: Custom Cursor --- */
-    .cursor-dot, .cursor-outline {
-        pointer-events: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        z-index: 9999;
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
-    }
-    .cursor-dot {
-        width: 8px;
-        height: 8px;
-        background-color: var(--primary);
-    }
-    .cursor-outline {
-        width: 40px;
-        height: 40px;
-        border: 2px solid var(--primary);
-        transition-duration: 0.1s;
-    }
-    body:hover .cursor-dot, body:hover .cursor-outline {
-        opacity: 1;
-    }
-    .cursor-outline.hovered {
-        transform: translate(-50%, -50%) scale(1.5);
-        background-color: rgba(0, 242, 254, 0.1);
-    }
-    
-    /* --- NEW: Aurora Background --- */
-    .aurora-background {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-    }
-    .aurora-background::before {
-        content: '';
-        position: absolute;
-        width: 1000px;
-        height: 1000px;
-        background-image: linear-gradient(45deg, var(--primary), var(--secondary), #8A2BE2);
-        border-radius: 50%;
-        filter: blur(150px);
-        opacity: 0.2;
-        top: 50%;
-        left: 50%;
-        animation: aurora-flow 25s linear infinite alternate;
-    }
-    @keyframes aurora-flow {
-        0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
-        100% { transform: translate(-30%, -70%) rotate(360deg) scale(1.4); }
-    }
-
-
-    /* --- NEW: Glassmorphism Navigation --- */
-    nav {
-      position: sticky;
-      top: 0;
-      width: 100%;
-      padding: 15px 0;
-      text-align: center;
-      z-index: 1000;
-      background: rgba(10, 15, 26, 0.5);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--card-border);
-    }
-    nav a {
-      margin: 0 15px;
-      color: var(--text-light);
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s, text-shadow 0.3s;
     }
 
     /* Hero Section */
     header {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       text-align: center;
-      padding: 0 20px;
+      padding: 120px 20px;
+      color: var(--white);
     }
     header h1 {
-      font-size: clamp(2.5rem, 8vw, 5rem);
-      font-weight: 700;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      font-size: 3em;
+      background: linear-gradient(90deg, var(--white), var(--bg-beige));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 10px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
     }
     header p {
-      font-size: clamp(1rem, 3vw, 1.5rem);
-      color: var(--text-dark);
-      font-weight: 300;
+      font-size: 1.2em;
+      margin-top: 15px;
+      opacity: 0.9;
     }
     .hero-btn {
       display: inline-block;
-      margin-top: 40px;
-      padding: 14px 30px;
-      background: linear-gradient(90deg, var(--secondary), var(--primary));
-      color: var(--background-dark);
-      border-radius: 50px;
+      margin-top: 30px;
+      padding: 12px 25px;
+      background: var(--white);
+      color: var(--primary);
+      border-radius: 30px;
       text-decoration: none;
       font-weight: bold;
-      transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
-    
-    /* General Section Styling */
-    main {
-        position: relative;
-        z-index: 2;
+    .hero-btn:hover {
+      background: var(--bg-beige);
+      transform: translateY(-2px);
     }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--white);
+      padding: 12px;
+      text-align: center;
+      z-index: 100;
+      border-bottom: 1px solid var(--border-light);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    nav a {
+      margin: 0 15px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #000;
+    }
+
+    /* Sections */
     section {
-      padding: 80px 20px;
+      padding: 50px 20px;
       max-width: 1100px;
       margin: auto;
       opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      transform: translateY(40px);
+      transition: all 0.8s ease-in-out;
+    }
+    /* Alternating section backgrounds */
+    #about, #skills, #tools, #hackathons {
+        background-color: var(--bg-sky-blue);
+    }
+    #projects, #certifications, #trainings, #contact {
+        background-color: var(--bg-beige);
     }
     section.show {
       opacity: 1;
       transform: translateY(0);
     }
     h2 {
-      text-align: center;
-      font-size: 2.5em;
-      margin-bottom: 60px;
-      font-weight: 600;
+      font-size: 2em;
+      margin-bottom: 30px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-
-    /* About Section */
+    
+    /* About Me Section */
     .about-container {
-      display: flex;
-      align-items: center;
-      gap: 50px;
+        display: flex;
+        align-items: center;
+        gap: 40px;
     }
     .profile-pic {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--primary);
-      box-shadow: 0 0 25px rgba(0, 242, 254, 0.4);
-      flex-shrink: 0;
-      transition: transform 0.3s, box-shadow 0.3s;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid var(--white);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        flex-shrink: 0;
     }
     .about-text {
-      flex-grow: 1;
-      font-size: 1.1rem;
-      color: var(--text-dark);
-      line-height: 1.8;
+        flex-grow: 1;
     }
 
-    /* --- NEW: Glassmorphism Cards for Projects --- */
+    /* Projects */
     .projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
     }
     .card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      backdrop-filter: blur(5px);
-      padding: 30px;
-      border-radius: 15px;
-      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      background: var(--white);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.12);
     }
     .card h3 {
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       color: var(--primary);
-      font-size: 1.4rem;
-    }
-    .card p {
-        color: var(--text-dark);
-        line-height: 1.7;
     }
     .card a {
       color: var(--secondary);
+      font-weight: bold;
       text-decoration: none;
-      font-weight: 600;
-      display: inline-block;
-      margin-top: 20px;
     }
 
-    /* --- NEW: Glassmorphism Skills --- */
+    /* Skills */
     .skills {
       display: flex;
       flex-wrap: wrap;
-      gap: 15px;
+      gap: 12px;
       justify-content: center;
     }
     .skill {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      color: var(--text-light);
-      padding: 12px 25px;
-      border-radius: 30px;
-      font-weight: 600;
-      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      color: var(--white);
+      padding: 10px 18px;
+      border-radius: 20px;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-    
-    /* Hover Effects for Interactive Elements */
-    a, button, .card, .skill, .profile-pic, .hero-btn {
-        cursor: none;
-    }
-    nav a:hover {
-      color: var(--primary);
-      text-shadow: 0 0 10px var(--primary);
-    }
-    .hero-btn:hover, .profile-pic:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 0 35px rgba(0, 242, 254, 0.6);
-    }
-    .card:hover {
-        transform: translateY(-10px);
-        border-color: var(--primary);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-    }
-    .skill:hover {
-        transform: translateY(-5px);
-        background: var(--primary);
-        color: var(--background-dark);
-        box-shadow: 0 0 15px var(--primary);
-    }
-    
+
+    /* Links list (for courses/certs) */
     .link-list {
-        list-style: none;
-        text-align: center;
+        list-style-type: none;
+        padding: 0;
     }
     .link-list li {
-      margin: 15px 0;
+      margin: 10px 0;
     }
     .link-list a {
-      color: var(--secondary);
+      color: var(--primary);
       text-decoration: none;
-      font-size: 1.1rem;
-      transition: color 0.3s;
+      font-weight: bold;
     }
     .link-list a:hover {
-        color: var(--primary);
-        text-shadow: 0 0 10px var(--primary);
+      text-decoration: underline;
     }
 
-    #contact p {
-        text-align: center;
+    /* --- NEW: Contact Form Styles --- */
+    #contact h2 {
+        text-align: left;
+        background: none;
+        -webkit-background-clip: unset;
+        -webkit-text-fill-color: unset;
         color: var(--text-dark);
-        margin-bottom: 15px;
+        font-weight: 700;
+        margin-bottom: 10px;
     }
-    #contact a {
-        color: var(--secondary);
-        text-decoration: none;
+    #contact h2::after {
+        content: '';
+        display: block;
+        width: 50px;
+        height: 4px;
+        background: var(--accent-gold);
+        margin-top: 8px;
+        border-radius: 2px;
     }
-    .contact-links {
-        text-align: center;
+    .form-intro {
+        text-align: left;
+        font-size: 1.1rem;
+        color: #555;
+        margin-bottom: 30px;
     }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      margin-top: 50px;
-      color: var(--text-dark);
-      border-top: 1px solid var(--card-border);
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
-    
-    /* Scroll to top button */
-    #topBtn {
-        display: none;
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        z-index: 100;
-        border: none;
-        outline: none;
-        background-color: var(--primary);
-        color: var(--background-dark);
+    .form-group {
+        display: flex;
+        gap: 20px;
+    }
+    .contact-form input, .contact-form textarea {
+        width: 100%;
+        background: var(--white);
+        border: 1px solid var(--border-light);
+        color: var(--text-dark);
         padding: 15px;
-        border-radius: 50%;
-        font-size: 18px;
-        box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
+        border-radius: 12px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 1rem;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .contact-form input::placeholder, .contact-form textarea::placeholder {
+        color: #999;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 8px rgba(74, 92, 106, 0.2);
+    }
+    .contact-form textarea {
+        height: 140px;
+        resize: vertical;
+    }
+    .form-submit-row {
+        text-align: right;
+    }
+    .submit-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 25px;
+        border: none;
+        background: var(--primary);
+        color: var(--white);
+        font-weight: 600;
+        border-radius: 12px;
+        cursor: pointer;
         transition: background-color 0.3s, transform 0.3s;
     }
-    #topBtn:hover {
-        background-color: var(--secondary);
-        transform: scale(1.1);
+    .submit-btn:hover {
+        background-color: #3a4a55;
+        transform: translateY(-2px);
+    }
+    .submit-btn svg {
+        width: 16px;
+        height: 16px;
+        fill: var(--white);
+    }
+    
+    footer {
+      background: var(--primary);
+      text-align: center;
+      padding: 20px;
+      color: var(--white);
     }
 
+    #topBtn {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--secondary);
+      color: var(--white);
+      border: none;
+      padding: 12px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 100;
+    }
+    
     @media (max-width: 768px) {
-        nav a { margin: 0 8px; font-size: 0.9rem; }
         .about-container {
             flex-direction: column;
             text-align: center;
+        }
+        .form-group {
+            flex-direction: column;
         }
     }
   </style>
 </head>
 <body>
-
-  <div class="cursor-dot"></div>
-  <div class="cursor-outline"></div>
-  <div class="aurora-background"></div>
+  <header>
+    <h1>Hey, I'm Chinmayi C!</h1>
+    <p>Generative AI • VLSI Design • Cybersecurity </p>
+    <a href="#projects" class="hero-btn">Explore My Work 🚀</a>
+  </header>
 
   <nav>
     <a href="#about">About</a>
@@ -348,118 +321,98 @@
     <a href="#skills">Skills</a>
     <a href="#certifications">Certifications</a>
     <a href="#tools">Tools</a>
+    <a href="#trainings">Trainings</a>
     <a href="#hackathons">Hackathons</a>
     <a href="#contact">Contact</a>
   </nav>
 
-  <header>
-    <h1>Hey, I'm Chinmayi C!</h1>
-    <p>Generative AI • VLSI Design • Cybersecurity</p>
-    <a href="#projects" class="hero-btn">Explore My Work 🚀</a>
-  </header>
-
-  <main>
-    <section id="about">
-      <h2>About Me</h2>
-      <div class="about-container">
-          <img src="chin.jpg" alt="Chinmayi C Profile Picture" class="profile-pic">
-          <div class="about-text">
-            <p>Hey, I’m Chinmayi C! I'm someone who loves playing at the edge where VLSI, Generative AI, and Cybersecurity collide. I see circuits as stories waiting to be told, AI as imagination given form, and security as the art of keeping that magic safe. I’m not just chasing trends — I’m here to design, build, and protect the tech of tomorrow. Curious by nature, creative by choice, and always excited to turn bold ideas into reality.</p>
-          </div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="projects">
-        <div class="card">
-          <h3>Intelligent Data Security System</h3>
-          <p>Designed a hybrid data security model combining AES encryption and GAN-based LSB steganography, integrated with machine learning for anomaly detection. The system ensures enhanced data confidentiality, provides robust threat detection, and prevents unauthorized access by intelligently detecting tampering attempts in real-time.</p>
-          <a href="https://github.com/Chin2202">View on GitHub &rarr;</a>
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about-container">
+        <img src="chin.jpg" alt="Chinmayi C Profile Picture" class="profile-pic">
+        <div class="about-text">
+            <p>Hey, I’m Chinmayi C! I'm someone who loves playing at the edge where VLSI, Generative AI, and Cybersecurity collide. I see circuits as stories waiting to be told, AI as imagination given form, and security as the art of keeping that magic safe. I’m not just chasing trends — I’m here to design, build, and protect the tech of tomorrow.</p>
         </div>
-        <div class="card">
-          <h3>AI Timing Violation Predictor</h3>
-          <p>Developed a machine learning-based prediction tool to identify timing violations in VLSI circuits before physical implementation. Leveraged historical simulation data to train neural networks, enabling early detection of critical path violations and reducing costly iterations in chip design.</p>
-        </div>
-        <div class="card">
-          <h3>RISC-V Processor Core</h3>
-          <p>Implemented a custom 32-bit RISC-V processor from scratch in Verilog, simulating modules such as ALU, Control Unit, and Register File. Conducted full functional verification using Icarus Verilog and waveform analysis with GTKWave.</p>
-        </div>
-        <div class="card">
-          <h3>VeriTB STUDIO</h3>
-          <p>Built a GUI-based Verilog Testbench Generator supporting automatic simulation, assertion insertion, and ZIP export of generated testbenches, streamlining the verification workflow for multi-module designs.</p>
-        </div>
-        <div class="card">
-          <h3>AI Threat Detection</h3>
-          <p>Developed an intelligent cybersecurity system capable of real-time threat detection and mitigation. Leveraged machine learning algorithms to identify patterns of suspicious activity, predict potential attacks, and automate responses.</p>
-        </div>
-        <div class="card">
-          <h3>Gesture Controlled Dino Game</h3>
-          <p>Created a Python-based gesture-controlled game where hand movements detected via webcam are mapped to in-game actions. Applied computer vision and image processing techniques to track gestures accurately.</p>
-        </div>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="skills">
-      <h2>Core Competencies</h2>
-      <div class="skills">
-        <div class="skill">Generative AI</div>
-        <div class="skill">SystemVerilog</div>
-        <div class="skill">Python</div>
-        <div class="skill">C/C++</div>
-        <div class="skill">TensorFlow</div>
-        <div class="skill">VLSI Design</div>
-        <div class="skill">Arduino</div>
-        <div class="skill">Cybersecurity</div>
-        <div class="skill">MATLAB</div>
-        <div class="skill">Cadence</div>
-      </div>
-    </section>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="card"><h3>Intelligent Data Security System</h3><p>Designed a hybrid data security model combining AES encryption and GAN-based LSB steganography, integrated with machine learning for anomaly detection. The system ensures enhanced data confidentiality, provides robust threat detection, and prevents unauthorized access by intelligently detecting tampering attempts in real-time.</p><a href="https://github.com/Chin2202">GitHub Link</a></div>
+      <div class="card"><h3>AI Timing Violation Predictor</h3><p>Developed a machine learning-based prediction tool to identify timing violations in VLSI circuits before physical implementation, reducing costly iterations in chip design and improving overall design efficiency and reliability.</p></div>
+      <div class="card"><h3>RISC-V Processor Core</h3><p>Implemented a custom 32-bit RISC-V processor from scratch in Verilog, simulating modules such as ALU, Control Unit, Instruction Memory, and Register File. Conducted full functional verification using Icarus Verilog and waveform analysis with GTKWave.</p></div>
+      <div class="card"><h3>VeriTB STUDIO</h3><p>Built a GUI-based Verilog Testbench Generator supporting automatic simulation, assertion insertion, and ZIP export of generated testbenches, streamlining the verification workflow for multi-module designs.</p></div>
+      <div class="card"><h3>AI Threat Detection</h3><p>Developed an intelligent cybersecurity system capable of real-time threat detection and mitigation, leveraging machine learning algorithms to identify patterns of suspicious activity and predict potential attacks.</p></div>
+      <div class="card"><h3>Dino Game Using Hand Gesture Recognition</h3><p>Created a Python-based gesture-controlled game where hand movements detected via webcam are mapped to in-game actions. Applied computer vision and image processing techniques for an interactive gaming experience.</p></div>
+    </div>
+  </section>
 
-    <section id="certifications">
-        <h2>Certifications</h2>
-        <ul class="link-list">
-            <li><a href="https://www.credly.com/badges/75dd88a2-a6f4-4b5f-bfd7-c64d35b2fa4c/linked_in_profile">RTL-to-GDSII Flow v6.0 (Cadence)</a></li>
-            <li><a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=B7AEA3245DEA07088AFB1CE16D42FC16E99150E7ECC6B691F7B5C7F316518DC9">Oracle Certified Generative AI Professional</a></li>
-            <li><a href="#">Deloitte Cyber Security Simulation</a></li>
-            <li><a href="#">Microsoft Generative AI (LinkedIn)</a></li>
-        </ul>
-    </section>
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill">Generative AI</div><div class="skill">SystemVerilog</div><div class="skill">Python</div><div class="skill">C/C++</div><div class="skill">TensorFlow</div><div class="skill">VLSI Design</div><div class="skill">Arduino</div><div class="skill">Cybersecurity</div><div class="skill">MATLAB</div><div class="skill">Cadence</div>
+    </div>
+  </section>
 
-    <section id="tools">
-        <h2>Tools</h2>
-        <p style="text-align: center; font-size: 1.2rem; color: var(--text-dark); line-height: 1.8;">Cadence • Vivado • Icarus Verilog • GTKWave • UiPath Studio • Keil • Arduino IDE • MATLAB • Power Automate</p>
-    </section>
-    
-    <section id="trainings">
-        <h2>Trainings</h2>
-        <ul class="link-list">
-            <li>BOSCH – Industry-focused emerging technologies (2025)</li>
-            <li>NXP Semiconductors – RF Circuit Design & Simulation (2025)</li>
-            <li>NXTWave – Build Your Own Gen AI Model (2024)</li>
-        </ul>
-    </section>
+ <!-- Certifications -->
 
-    <section id="hackathons">
-        <h2>Hackathons & Roles</h2>
-        <p style="text-align:center; color: var(--text-dark); line-height: 1.9; font-size: 1.1rem;">
-            <b>SIH 2023</b>: AI-based legal documentation project, national finalist.<br>
-            <b>FOSS Hackathon 2024</b>: Contributions to FreeCAD open-source.<br>
-            <b>Anvesana Hub</b>: Content Writer, enhancing digital reach.
-        </p>
-    </section>
-    
-    <section id="contact">
-      <h2>Get In Touch</h2>
-      <div class="contact-links">
-        <p>Email: <a href="mailto:chinnnn2202@gmail.com">chinnnn2202@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/chinmayi-chidanand-263656268">linkedin.com/in/chinmayi-chidanand</a></p>
-        <p>GitHub: <a href="https://github.com/Chin2202">github.com/Chin2202</a></p>
-        <p>Instagram: <a href="https://www.instagram.com/chinmayi.chidanand/">instagram.com/chinmayi.chidanand/</a></p>
-        <a class="hero-btn" href="Chinmayi-C-Resume (2).pdf" target="_blank" style="margin-top: 30px;">📄 View Resume</a>
-      </div>
-    </section>
-  </main>
+  <section id="certifications">
+
+    <h2>Certifications</h2>
+
+    <ul class="link-list">
+
+      <li><a href="https://www.credly.com/badges/75dd88a2-a6f4-4b5f-bfd7-c64d35b2fa4c/linked_in_profile">RTL-to-GDSII Flow v6.0 (Cadence)</a></li>
+      <li><a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=B7AEA3245DEA07088AFB1CE16D42FC16E99150E7ECC6B691F7B5C7F316518DC9">Oracle Certified Generative AI Professional</a></li>
+      <li><a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/E9pA6qsdbeyEkp3ti_9PBTqmSxAf6zZTseP_ZoBADaJtWkdL7Sepv_1751020740982_completion_certificate.pdf">Deloitte Cyber Security Simulation</a></li>
+      <li><a href="https://www.linkedin.com/learning/generative-ai-skills-for-creative-content-opportunities-issues-and-ethics/the-art-of-generative-ai-balancing-creativity-and-ethics?contextUrn=urn%3Ali%3AlyndaLearningPath%3A65e9f14d498eb0b31d620438">Microsoft Generative AI (LinkedIn)</a></li>
+      <li><a href="https://infyspringboard.onwingspan.com/web/en/app/toc/lex_12666306402263577000_shared/overview">Introduction to Data Science</a></li>
+      <li><a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/udmxiyHeqYQLkTPvf_9PBTqmSxAf6zZTseP_ZoBADaJtWkdL7Sepv_1751534049512_completion_certificate.pdf">Technology Job Simulation</a></li>
+      <li><a href="https://infyspringboard.onwingspan.com/web/en/app/toc/lex_auth_01367918297871155216/overview">Introduction to Digital Marketing</a></li>
+      <li><a href="https://q8m3gpN4ETXnjapPq_3w79S9RRBtn9noDWZ_ZoBADaJtWkdL7Sepv_1752633605337_completion_certificate.pdf https://share.google/xiVPVExJUzzBEvpF2">Robotics and Controls Job Simulation</a></li>
+      <li><a href="https://www.linkedin.com/learning/certificates/08555bed3352c3cc74169cff4cbd1a9a35f954cee198c432c24f8c1a2c8b376e?trk=share_certificate">CyberSecurity Foundations</a></li>
+    </ul>
+  </section>
+
+
+
+  <section id="tools">
+    <h2>Tools</h2>
+    <p style="text-align: center; font-size: 1.1rem; line-height: 1.8;">Cadence • Vivado • Icarus Verilog • GTKWave • UiPath Studio • Keil • Arduino IDE • MATLAB • Power Automate</p>
+  </section>
+
+  <section id="trainings">
+    <h2>Trainings</h2>
+    <ul class="link-list">
+      <li>BOSCH – Industry-focused emerging technologies (2025)</li>
+      <li>NXP Semiconductors – RF Circuit Design & Simulation (2025)</li>
+      <li>NXTWave – Build Your Own Gen AI Model (2024)</li>
+    </ul>
+  </section>
+
+  <section id="hackathons">
+    <h2>Hackathons & Roles</h2>
+    <p style="text-align: center; line-height: 1.8;"><b>SIH 2023</b>: AI-based legal documentation project, national finalist.<br><b>FOSS Hackathon 2024</b>: Contributions to FreeCAD open-source.<br><b>Anvesana Hub</b>: Content Writer, enhancing digital reach.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p class="form-intro">Contact Form</p>
+    <form class="contact-form" action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
+        <div class="form-group">
+            <input type="text" name="name" placeholder="Full name" required>
+            <input type="email" name="email" placeholder="Email address" required>
+        </div>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <div class="form-submit-row">
+            <button type="submit" class="submit-btn">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Send Message</span>
+            </button>
+        </div>
+    </form>
+  </section>
 
   <footer>
     <p>© 2025 Chinmayi C | Crafted with ⚡</p>
@@ -468,48 +421,10 @@
   <button onclick="topFunction()" id="topBtn">⬆</button>
 
   <script>
-    // --- Custom Cursor Logic ---
-    const cursorDot = document.querySelector('.cursor-dot');
-    const cursorOutline = document.querySelector('.cursor-outline');
-    
-    window.addEventListener('mousemove', (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
-
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
-
-        cursorOutline.animate({
-            left: `${posX}px`,
-            top: `${posY}px`
-        }, { duration: 500, fill: 'forwards' });
-    });
-
-    const interactiveElements = document.querySelectorAll('a, button, .skill, .profile-pic, .card, .hero-btn');
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseover', () => cursorOutline.classList.add('hovered'));
-        el.addEventListener('mouseleave', () => cursorOutline.classList.remove('hovered'));
-    });
-
-    // --- Scroll Reveal Animation ---
-    const sections = document.querySelectorAll("section");
-    const animateOnScroll = () => {
-        const trigger = window.innerHeight * 0.8;
-        sections.forEach(section => {
-            const top = section.getBoundingClientRect().top;
-            if (top < trigger) {
-                section.classList.add("show");
-            }
-        });
-    };
-    
-    window.addEventListener("scroll", animateOnScroll);
-    document.addEventListener("DOMContentLoaded", animateOnScroll);
-
-    // --- Scroll-to-top button logic ---
+    // Scroll-to-top button
     let topBtn = document.getElementById("topBtn");
     window.onscroll = function() {
-      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
         topBtn.style.display = "block";
       } else {
         topBtn.style.display = "none";
@@ -519,6 +434,20 @@
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
     }
+
+    // Animate sections on scroll
+    const sections = document.querySelectorAll("section");
+    const animateOnScroll = () => {
+        const trigger = window.innerHeight * 0.85;
+        sections.forEach(section => {
+            const top = section.getBoundingClientRect().top;
+            if (top < trigger) {
+                section.classList.add("show");
+            }
+        });
+    };
+    window.addEventListener("scroll", animateOnScroll);
+    document.addEventListener("DOMContentLoaded", animateOnScroll);
   </script>
 </body>
 </html>
