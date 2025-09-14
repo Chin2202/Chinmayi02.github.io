@@ -27,6 +27,16 @@
       color: var(--text-light);
       scroll-behavior: smooth;
     }
+    
+    /* --- Particles Background --- */
+    #particles-bg {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1; /* Crucial to keep it in the background */
+    }
 
     .container {
       max-width: 1200px;
@@ -361,8 +371,10 @@
   </style>
 </head>
 <body>
+  
+  <div id="particles-bg"></div>
 
- <nav>
+  <nav>
     <div class="container nav-container">
       <div class="nav-logo"><a href="#">Chinmayi C.</a></div>
       <div class="nav-links">
@@ -469,7 +481,7 @@
                   <p>Created a Python-based gesture-controlled game where hand movements detected via webcam are mapped to in-game actions. Applied computer vision and image processing techniques to track gestures accurately, offering a real-time interactive gaming experience.</p>
               </div>
           </div>
- 
+  
 <div class="project-card">
               <img src="radar.jpeg" alt="RADAR-Based Object Detection Using Ultrasonic Sensor">
               <div class="project-content">
@@ -551,17 +563,17 @@
             </form>
         </div>
     </section>
- <section id="contact">
- <div class="container">
-    <h2>Contact</h2>
+  <section id="contact">
+  <div class="container">
+    <h2>Contact</h2>
     <ul class="link-list">
       
-    <li><a> Email: </a> <p href="mailto:chinnnn2202@gmail.com">chinnnn2202@gmail.com</p></li>
-    <li><a> LinkedIn: </a><p href="https://linkedin.com/in/chinmayi-chidanand-263656268">linkedin.com/in/chinmayi-chidanand</p></li>
-    <li><a>GitHub: </a><p href="https://github.com/Chin2202">github.com/Chin2202</p></li>
+    <li><a> Email: </a> <p href="mailto:chinnnn2202@gmail.com">chinnnn2202@gmail.com</p></li>
+    <li><a> LinkedIn: </a><p href="https://linkedin.com/in/chinmayi-chidanand-263656268">linkedin.com/in/chinmayi-chidanand</p></li>
+    <li><a>GitHub: </a><p href="https://github.com/Chin2202">github.com/Chin2202</p></li>
       </ul>
    </div>
- </section>
+  </section>
     <section id="resume">
       <div class="container">
           <div class="list-section-container">
@@ -592,6 +604,76 @@
     };
     window.addEventListener("scroll", animateOnScroll);
     document.addEventListener("DOMContentLoaded", animateOnScroll);
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+
+  <script>
+    tsParticles.load("particles-bg", {
+      background: {
+        color: {
+          value: "#12181F" // Matches your --bg-dark
+        }
+      },
+      fpsLimit: 60,
+      interactivity: {
+        events: {
+          onHover: {
+            enable: true,
+            mode: "repulse"
+          },
+          resize: true
+        },
+        modes: {
+          repulse: {
+            distance: 100,
+            duration: 0.4
+          }
+        }
+      },
+      particles: {
+        color: {
+          value: "#A0AEC0" // Matches your --text-muted
+        },
+        links: {
+          color: "#2D3748", // Matches your --border-color
+          distance: 150,
+          enable: true,
+          opacity: 0.5,
+          width: 1
+        },
+        collisions: {
+          enable: false
+        },
+        move: {
+          direction: "none",
+          enable: true,
+          outModes: {
+            default: "bounce"
+          },
+          random: false,
+          speed: 1.5,
+          straight: false
+        },
+        number: {
+          density: {
+            enable: true,
+            area: 800
+          },
+          value: 80
+        },
+        opacity: {
+          value: 0.5
+        },
+        shape: {
+          type: "circle"
+        },
+        size: {
+          value: { min: 1, max: 3 }
+        }
+      },
+      detectRetina: true
+    });
   </script>
 </body>
 </html>
