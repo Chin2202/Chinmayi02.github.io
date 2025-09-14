@@ -152,7 +152,7 @@
     .hero-text .description {
         margin: 20px 0 30px;
         color: var(--text-muted);
-        line-height: 1.8;
+        line-height: 1.9; /* MODIFIED: Increased spacing */
         max-width: 500px;
     }
     .hero-image img {
@@ -199,7 +199,7 @@
     }
     #about .about-text p {
         color: var(--text-muted);
-        line-height: 1.8;
+        line-height: 1.9; /* MODIFIED: Increased spacing */
     }
 
     /* --- Projects Section --- */
@@ -238,7 +238,7 @@
     }
     .project-content p {
         color: var(--text-muted);
-        line-height: 1.7;
+        line-height: 1.9; /* MODIFIED: Increased spacing */
         flex-grow: 1;
         margin-bottom: 20px;
     }
@@ -261,6 +261,10 @@
         border-radius: 10px;
         border: 1px solid var(--border-color);
         font-weight: 600;
+    }
+    
+    #hackathons p {
+        line-height: 1.9; /* MODIFIED: Increased spacing */
     }
 
     /* --- Two-column list sections (Certs, Trainings, etc.) --- */
@@ -390,9 +394,6 @@
       <div class="nav-button"><a href="#contact">Let's Talk</a></div>
     </div>
   </nav>
-
-
-
 
   <header>
     <div class="container">
@@ -610,69 +611,108 @@
 
   <script>
     tsParticles.load("particles-bg", {
-      background: {
-        color: {
-          value: "#12181F" // Matches your --bg-dark
-        }
-      },
-      fpsLimit: 60,
-      interactivity: {
-        events: {
-          onHover: {
-            enable: true,
-            mode: "repulse"
-          },
-          resize: true
+        fpsLimit: 60,
+        interactivity: {
+            events: {
+                onHover: {
+                    enable: true,
+                    mode: "attract" // Particles will be attracted to the cursor
+                },
+                resize: true
+            },
+            modes: {
+                attract: {
+                    distance: 200,
+                    duration: 0.4,
+                    speed: 1
+                }
+            }
         },
-        modes: {
-          repulse: {
-            distance: 100,
-            duration: 0.4
-          }
-        }
-      },
-      particles: {
-        color: {
-          value: "#A0AEC0" // Matches your --text-muted
+        particles: {
+            number: {
+                density: {
+                    enable: true,
+                    area: 800
+                },
+                value: 80
+            },
+            color: {
+                value: "#ffffff", // Base color
+                animation: {
+                    enable: true,
+                    speed: 20,
+                    sync: true,
+                    h: {
+                      start: 200, // Starts around blue
+                      end: 240,   // Ends around a deeper blue/purple
+                      velocity: 10
+                    }
+                }
+            },
+            shape: {
+                type: ["circle", "square", "triangle"] // Multiple shapes!
+            },
+            opacity: {
+                value: {min: 0.1, max: 0.5},
+                animation: {
+                    enable: true,
+                    speed: 1,
+                    minimumValue: 0.1,
+                    sync: false
+                }
+            },
+            size: {
+                value: {min: 1, max: 5}
+            },
+            links: {
+                enable: true,
+                distance: 150,
+                color: "random", // Links will take on random particle colors
+                opacity: 0.4,
+                width: 1,
+                triangles: {
+                    enable: true,
+                    color: "#1A222A",
+                    opacity: 0.1
+                }
+            },
+            move: {
+                enable: true,
+                speed: 3,
+                direction: "none",
+                random: true,
+                straight: false,
+                outModes: {
+                    default: "out"
+                }
+            },
+            life: {
+                duration: {
+                    sync: false,
+                    value: 3
+                },
+                count: 0,
+                delay: {
+                    random: {
+                        enable: true,
+                        minimumValue: 0.5
+                    },
+                    value: 1
+                }
+            },
+            wobble: { // Fun wobble effect
+                enable: true,
+                distance: 10,
+                speed: 10
+            },
+            tilt: { // Fun tilt effect
+                enable: true,
+                direction: "random",
+                value: 20,
+                speed: 20
+            }
         },
-        links: {
-          color: "#2D3748", // Matches your --border-color
-          distance: 150,
-          enable: true,
-          opacity: 0.5,
-          width: 1
-        },
-        collisions: {
-          enable: false
-        },
-        move: {
-          direction: "none",
-          enable: true,
-          outModes: {
-            default: "bounce"
-          },
-          random: false,
-          speed: 1.5,
-          straight: false
-        },
-        number: {
-          density: {
-            enable: true,
-            area: 800
-          },
-          value: 80
-        },
-        opacity: {
-          value: 0.5
-        },
-        shape: {
-          type: "circle"
-        },
-        size: {
-          value: { min: 1, max: 3 }
-        }
-      },
-      detectRetina: true
+        detectRetina: true
     });
   </script>
 </body>
