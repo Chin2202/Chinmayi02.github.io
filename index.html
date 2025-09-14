@@ -127,14 +127,14 @@
     .hero-text .sub-heading {
         font-weight: 600;
         color: var(--text-muted);
-        margin-bottom: 10px;
+        margin-bottom: 30px; /* MODIFIED: Increased space above the button */
         text-transform: uppercase;
     }
     .hero-text h1 {
         font-size: 3.2rem;
         font-weight: 700;
         line-height: 1.2;
-        margin-bottom: 20px; /* MODIFIED: Added space below the main title */
+        margin-bottom: 20px;
     }
     .hero-text h1 .highlight {
         color: var(--primary-blue);
@@ -617,103 +617,63 @@
             events: {
                 onHover: {
                     enable: true,
-                    mode: "attract" // Particles will be attracted to the cursor
+                    mode: "repulse", // MODIFIED: Push particles away on hover
                 },
-                resize: true
+                onClick: {
+                    enable: true,
+                    mode: "push", // MODIFIED: Create new particles on click
+                },
+                resize: true,
             },
             modes: {
-                attract: {
-                    distance: 200,
+                repulse: {
+                    distance: 150,
                     duration: 0.4,
-                    speed: 1
-                }
-            }
+                },
+                push: {
+                    quantity: 4,
+                },
+            },
         },
         particles: {
             number: {
                 density: {
                     enable: true,
-                    area: 800
+                    area: 800,
                 },
-                value: 80
+                value: 80,
             },
             color: {
-                value: "#ffffff", // Base color
-                animation: {
-                    enable: true,
-                    speed: 20,
-                    sync: true,
-                    h: {
-                      start: 200, // Starts around blue
-                      end: 240,   // Ends around a deeper blue/purple
-                      velocity: 10
-                    }
-                }
+                value: "#A0AEC0",
             },
             shape: {
-                type: ["circle", "square", "triangle"] // Multiple shapes!
+                type: "circle",
             },
             opacity: {
-                value: {min: 0.1, max: 0.5},
-                animation: {
-                    enable: true,
-                    speed: 1,
-                    minimumValue: 0.1,
-                    sync: false
-                }
+                value: 0.5,
             },
             size: {
-                value: {min: 1, max: 5}
+                value: { min: 1, max: 3 },
             },
             links: {
-                enable: true,
+                color: "#2D3748",
                 distance: 150,
-                color: "random", // Links will take on random particle colors
-                opacity: 0.4,
+                enable: true,
+                opacity: 0.5,
                 width: 1,
-                triangles: {
-                    enable: true,
-                    color: "#1A222A",
-                    opacity: 0.1
-                }
             },
             move: {
                 enable: true,
-                speed: 3,
+                speed: 2,
                 direction: "none",
-                random: true,
+                random: false,
                 straight: false,
                 outModes: {
-                    default: "out"
-                }
-            },
-            life: {
-                duration: {
-                    sync: false,
-                    value: 3
+                    default: "bounce",
                 },
-                count: 0,
-                delay: {
-                    random: {
-                        enable: true,
-                        minimumValue: 0.5
-                    },
-                    value: 1
-                }
             },
-            wobble: { // Fun wobble effect
-                enable: true,
-                distance: 10,
-                speed: 10
-            },
-            tilt: { // Fun tilt effect
-                enable: true,
-                direction: "random",
-                value: 20,
-                speed: 20
-            }
         },
-        detectRetina: true
+        detectRetina: true,
     });
   </script>
 </body>
